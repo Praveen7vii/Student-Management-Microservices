@@ -1,0 +1,23 @@
+server:
+  port: 8888  #the port on which the config server will run
+
+spring:
+  application:
+    name: S-Config-Server
+
+  profiles:
+    active: native  # Activate the 'native' profile to load configurations from the local file system instead of Git
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config  # Location from where config files will be served
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Eureka server URL
+    register-with-eureka: true
+    fetch-registry: true
+

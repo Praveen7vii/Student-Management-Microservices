@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: S-APIGateway
+
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: student-service
+              uri: lb://Student-Service  #uri is the destination address where the gateway forwards the request after matching the route.
+              predicates:
+                - Path=/api/student/**
+
+            - id: course-service
+              uri: lb://Course-Service
+              predicates:
+                - Path=/api/course/**
+
+            - id: enrollment-service
+              uri: lb://Enrollment-Service
+              predicates:
+                - Path=/api/enrollment/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
