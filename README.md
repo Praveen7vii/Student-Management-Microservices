@@ -67,11 +67,12 @@ student-management-microservices
                        |
         ---------------------------------
         |               |               |
-        v               v               v
-  Student Service   Course Service   Enrollment Service
+        v               v               ∨ 
+        
+    Student Service   Course Service   Enrollment Service
         |               |               |
         v               v               v
-   Student DB       Course DB       Enrollment DB
+    Student DB       Course DB       Enrollment DB
         (MySQL)        (MySQL)           (MySQL)
 
 
