@@ -52,21 +52,28 @@ student-management-microservices
 └── README.md
 
 🚀 Architecture Flow
-Client (Postman / Frontend)
-        |
-        v
-     API Gateway
-        |
-        v
------------------------------------------
-| Student | Course | Enrollment Services |
------------------------------------------
-        |
-        v
-     MySQL Databases
-        |
-        v
-   Eureka & Config Server
+
+                Client
+        (Postman / Frontend)
+                       |
+                       | HTTP Requests
+                       v
+                API Gateway
+        (Routing, Auth, Filters)
+                       |
+                       | Service Discovery
+                       v
+                Eureka Server
+                       |
+        ---------------------------------
+        |               |               |
+        v               v               v
+  Student Service   Course Service   Enrollment Service
+        |               |               |
+        v               v               v
+   Student DB       Course DB       Enrollment DB
+        (MySQL)        (MySQL)           (MySQL)
+
 
 
 
